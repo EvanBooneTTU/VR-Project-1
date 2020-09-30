@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Evan's Covid House</title>
+    <meta name="description" content="Hello, World! - A-Frame" />
+    <script src="libs/aframe.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+
+    <script>
+      // Global Variables
+      tvOn = false;
+      lightsOn = true;
+      covidMode = true;
+    </script>
+  </head>
+  <body>
+    <a-scene
+      cursor="rayOrigin: mouse"
+      physics="gravity: -9.8; restitution: 0.93"
+    >
+      <a-sky color="#add8e6"></a-sky>
+      <a-entity position="54 1.5 12">
+        <a-camera universal-controls wasd-controls="acceleration: 800">
+          <a-entity
+            raycaster="far: 150; objects: .intersectable"
+            geometry="primitive: ring; radiusOuter: 0.015;
+                              radiusInner: 0.01; segmentsTheta: 32"
+            material="color: #283644; shader: flat"
+            position="0 0 -0.75"
+          ></a-entity>
+        </a-camera>
+      </a-entity>
+      <a-sky color="#ECECEC"></a-sky>
+      <a-entity light="type: ambient; color: #b5b5b5"></a-entity>
+
+      <!-- JavaScript Code -->
+      <script type="text/javascript">
+        function remoteClick() {
+          var videoFeed = document.querySelector("#covid_video_output");
+
+          if (tvOn) {
+            videoFeed.setAttribute("visible", "false");
+            tvOn = false;
+          } else {
+            videoFeed.setAttribute("visible", "true");
+            tvOn = true;
+          }
+        }
+
+        function covidClick() {
+          var goSign1 = document.querySelector("#goSign1");
+          var goSign2 = document.querySelector("#goSign2");
+          var stopSign1 = document.querySelector("#stopSign1");
+          var stopSign2 = document.querySelector("#stopSign2");
+          var covid_orb = document.querySelector("#covid_orb");
+          var covid_light_orb = document.querySelector("#covid_light_orb");
+          var poster = document.querySelector("#poster");
+          var videoFeed = document.querySelector("#covid_video_output");
+
+          if (covidMode) {
+            goSign1.setAttribute("visible", "true");
+            goSign2.setAttribute("visible", "true");
+            stopSign1.setAttribute("visible", "false");
+            stopSign2.setAttribute("visible", "false");
+            covid_light_orb.setAttribute("visible", "true");
+            covid_orb.setAttribute("visible", "false");
+            poster.setAttribute(
+              "material",
+              "shader: flat; opacity: 1; src: url(assets/texas_tech_image.jpg);"
+            );
+            videoFeed.setAttribute("src", "#twitch-video");
+            covidMode = false;
+          } else {
+            goSign1.setAttribute("visible", "false");
+            goSign2.setAttribute("visible", "false");
+            stopSign1.setAttribute("visible", "true");
+            stopSign2.setAttribute("visible", "true");
+            covid_light_orb.setAttribute("visible", "false");
+            covid_orb.setAttribute("visible", "true");
+            poster.setAttribute(
+              "material",
+              "shader: flat; opacity: 1; src: url(assets/corona_picture.png);"
+            );
+            videoFeed.setAttribute("src", "#covid-video");
+            covidMode = true;
+          }
+        }
+
+        function lightSwitch() {
+          var lightSphere1 = document.querySelector("#lightSphere1");
+          var lightSphere2 = document.querySelector("#lightSphere2");
+          var lightSphere3 = document.querySelector("#lightSphere3");
+          var lightSphere4 = document.querySelector("#lightSphere4");
+          var lightSphere5 = document.querySelector("#lightSphere5");
+
+          if (lightsOn) {
+            lightSphere1.setAttribute(
+              "light",
+              "type: point; color: #FFF; intensity: 0"
+            );
+            lightSphere2.setAttribute(
+              "light",
+              "type: point; color: #FFF; intensity: 0"
+            );
+            lightSphere3.setAttribute(
+              "light",
+              "type: point; color: #FFF; intensity: 0"
+            );
+            lightSphere4.setAttribute(
+              "light",
+              "type: point; color: #FFF; intensity: 0"
+            );
+            lightSphere5.setAttribute(
+              "light",
+              "type: point; color: #FFF; intensity: 0"
+            );
+            lightSphere1.setAttribute("material", "shader: flat; color: gray;");
+            lightSphere2.setAttribute("material", "shader: flat; color: gray;");
+            lightSphere3.setAttribute("material", "shader: flat; color: gray;");
+            lightSphere4.setAttribute("material", "shader: flat; color: gray;");
+            lightSphere5.setAttribute("material", "shader: flat; color: gray;");
+
+            lightsOn = false;
+          } else {
+            lightSphere1.setAttribute(
+              "light",
+              "type: point; color: #FFF; intensity: 0.1"
+            );
+            lightSphere2.setAttribute(
+              "light",
+              "type: point; color: #FFF; intensity: 0.1"
+            );
+            lightSphere3.setAttribute(
+              "light",
+              "type: point; color: #FFF; intensity: 0.1"
+            );
+            lightSphere4.setAttribute(
+              "light",
+              "type: point; color: #FFF; intensity: 0.1"
+            );
+            lightSphere5.setAttribute(
+              "light",
+              "type: point; color: #FFF; intensity: 0.1"
+            );
+            lightSphere1.setAttribute("material", "shader: flat; color: #FFF;");
+            lightSphere2.setAttribute("material", "shader: flat; color: #FFF;");
+            lightSphere3.setAttribute("material", "shader: flat; color: #FFF;");
+            lightSphere4.setAttribute("material", "shader: flat; color: #FFF;");
+            lightSphere5.setAttribute("material", "shader: flat; color: #FFF;");
+
+            lightsOn = true;
+          }
+        }
+      </script>
+
+      <!-- My Objects -->
+      <!-- Sofa -->
+      <a-obj-model
+        src="assets/sofa/sofa.obj"
+        mtl="assets/sofa/sofa.mtl"
+        scale="5 5 5"
+        position="69.3 0.5 -6"
+      ></a-obj-model>
+      <!-- Projector -->
+      <a-obj-model
+        src="assets/projector/projector.obj"
+        mtl="assets/projector/projector.mtl"
+        scale="5 5 5"
+        position="69.15 10.59 0"
+        rotation="0 117 0"
+      ></a-obj-model>
+
+      <!-- PC Desk -->
+      <a-assets>
+        <a-asset-item id="pcDeskAsset" src="assets/pcDesk.glb"> </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="pcDesk"
+        gltf-model="#pcDeskAsset"
+        position="43.449 2 4.391"
+        rotation="0 90 0"
+        scale="1 1 1"
+      ></a-entity>
+
+      <!-- Desk Chair -->
+      <a-assets>
+        <a-asset-item id="deskChairAsset" src="assets/deskChair.glb">
+        </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="deskChair"
+        gltf-model="#deskChairAsset"
+        position="41.487 -0.325 7.186"
+        rotation="0 132 0"
+        scale="4 3.6 4"
+      ></a-entity>
+
+      <!-- Light Switch -->
+      <a-assets>
+        <a-asset-item id="lightSwitchAsset" src="assets/lightSwitch.glb">
+        </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="lightSwitch"
+        onclick="lightSwitch()"
+        gltf-model="#lightSwitchAsset"
+        position="44.776 2.7 32.091"
+        scale="3 3 3"
+        rotation="0 180 0"
+      >
+      </a-entity>
+
+      <!-- TV -->
+      <a-assets>
+        <video
+          id="covid-video"
+          webkit-playsinline
+          playsinline
+          autoplay
+          loop="true"
+          src="assets/covid_video.mp4"
+        ></video>
+      </a-assets>
+
+      <a-assets>
+        <video
+          id="twitch-video"
+          webkit-playsinline
+          playsinline
+          autoplay
+          loop="true"
+          src="assets/twitch_gif.mp4"
+        ></video>
+      </a-assets>
+      <!-- Using the asset management system. -->
+      <a-video
+        webkit-playsinline
+        id="covid_video_output"
+        visible="true"
+        playsinline
+        src="#covid-video"
+        width="10"
+        height="6"
+        position="69.3 6.4 -19.3"
+      ></a-video>
+
+      <!-- Monitor -->
+      <a-assets>
+        <video
+          id="league-video"
+          webkit-playsinline
+          playsinline
+          autoplay
+          loop="true"
+          src="assets/league_gif.mp4"
+        ></video>
+      </a-assets>
+      <!-- Using the asset management system. -->
+      <a-video
+        webkit-playsinline
+        id="league_video_output"
+        visible="true"
+        playsinline
+        src="#league-video"
+        width="2.63"
+        height="1.45"
+        position="42.047 3.595 5.32"
+        rotation="-7.410 90 0"
+      ></a-video>
+      <!-- Remote -->
+      <a-assets>
+        <a-asset-item id="remote" src="assets/remote.glb"> </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        onclick="remoteClick()"
+        id="remote"
+        gltf-model="#remote"
+        position="65.9 1.021 -6.8"
+        scale="0.300 0.300 0.300"
+        rotation="0 -90 0"
+      >
+      </a-entity>
+
+      <!-- Posters -->
+      <a-entity
+        static-body
+        id="poster"
+        geometry="primitive: box; depth: 0.25; height: 9; width: 8"
+        position="50 6.4 -19.18"
+        material="shader: flat; opacity: 1; src: url(assets/corona_picture.png);"
+      ></a-entity>
+
+      <!-- Dog -->
+      <a-assets>
+        <a-asset-item id="dogAsset" src="assets/dog.glb"> </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="dog"
+        gltf-model="#dogAsset"
+        position="48.074 0.885 -15.007"
+        scale="1.500 1.500 1.500"
+        animation="property: position; to: 48.074 0.885 20; dur: 25000; loop: true; easing: linear; "
+      >
+      </a-entity>
+
+      <!-- Covid Object -->
+      <a-assets>
+        <a-asset-item id="glbtestmodel" src="assets/covid/coronavirus3d.glb">
+        </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="covid_orb"
+        onclick="covidClick()"
+        gltf-model="#glbtestmodel"
+        position="63.541 2.7 -6.228"
+        scale="0.007 0.007 0.007"
+        visible="true"
+      >
+      </a-entity>
+
+      <a-entity
+        id="covid_light_orb"
+        onclick="covidClick()"
+        geometry="primitive: sphere; radius: 0.8"
+        material="shader: flat"
+        light="type: point; color: #FFF; intensity: 0.1"
+        position="63.541 2.7 -6.228"
+        visible="false"
+      ></a-entity>
+
+      <a-cylinder
+        position="63.55 0.268 -6.222"
+        radius="0.25"
+        height="4.3"
+        material="src: url(assets/metal_texture.jpg)"
+      ></a-cylinder>
+
+      <!-- Glass Doors -->
+      <a-entity
+        geometry="primitive: box; depth: 0.1; height: 7; width: 5.9"
+        position="80 3 8"
+        rotation="0 90 0"
+        material="shader: standard;
+roughness: 1; src: url(assets/glass_texture.jpg); opacity: 0.85"
+      ></a-entity>
+      <a-entity
+        geometry="primitive: box; depth: 0.1; height: 7; width: 5.9"
+        position="80 3 2.142"
+        rotation="0 90 0"
+        material="shader: standard;
+roughness: 1; src: url(assets/glass_texture.jpg); opacity: 0.85"
+      ></a-entity>
+
+      <!-- Door Handle -->
+      <a-assets>
+        <a-asset-item id="doorHandle" src="assets/doorHandle.glb">
+        </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="doorH"
+        gltf-model="#doorHandle"
+        position="80.780 1.406 4.465"
+        rotation="3 -90 0"
+        scale="0.3 0.3 0.3"
+      >
+      </a-entity>
+      <a-entity
+        id="doorH"
+        gltf-model="#doorHandle"
+        position="80.780 1.406 5.6"
+        rotation="3 -90 0"
+        scale="0.3 0.3 0.3"
+      >
+      </a-entity>
+
+      <!-- Plinths -->
+      <a-assets>
+        <a-asset-item id="plinth" src="assets/plinth.glb"> </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="plinthID"
+        gltf-model="#plinth"
+        position="48 0 25"
+        rotation="0 0 0"
+        scale="0.8 0.65 0.8"
+      >
+      </a-entity>
+
+      <a-entity
+        id="plinthID"
+        gltf-model="#plinth"
+        position="54 0 25"
+        rotation="0 0 0"
+        scale="0.8 0.65 0.8"
+      >
+      </a-entity>
+
+      <a-entity
+        id="plinthID"
+        gltf-model="#plinth"
+        position="60 0 25"
+        rotation="0 0 0"
+        scale="0.8 0.65 0.8"
+      >
+      </a-entity>
+
+      <a-entity
+        id="plinthID"
+        gltf-model="#plinth"
+        position="66 0 25"
+        rotation="0 0 0"
+        scale="0.8 0.65 0.8"
+      >
+      </a-entity>
+
+      <a-entity
+        id="plinthID"
+        gltf-model="#plinth"
+        position="72 0 25"
+        rotation="0 0 0"
+        scale="0.8 0.65 0.8"
+      >
+      </a-entity>
+
+      <!-- Lights over Plinths -->
+      <a-assets>
+        <a-asset-item id="overheadLamp" src="assets/overheadLamp.glb">
+        </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="overheadLamp"
+        gltf-model="#overheadLamp"
+        position="48 8.013 25"
+        rotation="0 0 0"
+        scale="1 1 1"
+      >
+      </a-entity>
+
+      <a-entity
+        id="lightSphere1"
+        geometry="primitive: sphere; radius: 0.8"
+        material="shader: flat"
+        light="type: point; color: #FFF; intensity: 0.1"
+        position="48 8.122 25"
+      ></a-entity>
+
+      <a-entity
+        id="overheadLamp"
+        gltf-model="#overheadLamp"
+        position="54 8.013 25"
+        rotation="0 0 0"
+        scale="1 1 1"
+      >
+      </a-entity>
+
+      <a-entity
+        id="lightSphere2"
+        geometry="primitive: sphere; radius: 0.8"
+        material="shader: flat"
+        light="type: point; color: #FFF; intensity: 0.1"
+        position="54 8.122 25"
+      ></a-entity>
+
+      <a-entity
+        id="overheadLamp"
+        gltf-model="#overheadLamp"
+        position="60 8.013 25"
+        rotation="0 0 0"
+        scale="1 1 1"
+      >
+      </a-entity>
+
+      <a-entity
+        id="lightSphere3"
+        geometry="primitive: sphere; radius: 0.8"
+        material="shader: flat"
+        light="type: point; color: #FFF; intensity: 0.1"
+        position="60 8.122 25"
+      ></a-entity>
+
+      <a-entity
+        id="overheadLamp"
+        gltf-model="#overheadLamp"
+        position="66 8.013 25"
+        rotation="0 0 0"
+        scale="1 1 1"
+      >
+      </a-entity>
+
+      <a-entity
+        id="lightSphere4"
+        geometry="primitive: sphere; radius: 0.8"
+        material="shader: flat"
+        light="type: point; color: #FFF; intensity: 0.1"
+        position="66 8.122 25"
+      ></a-entity>
+
+      <a-entity
+        id="overheadLamp"
+        gltf-model="#overheadLamp"
+        position="72 8.013 25"
+        rotation="0 0 0"
+        scale="1 1 1"
+      >
+      </a-entity>
+
+      <a-entity
+        id="lightSphere5"
+        geometry="primitive: sphere; radius: 0.8"
+        material="shader: flat"
+        light="type: point; color: #FFF; intensity: 0.1"
+        position="72 8.122 25"
+      ></a-entity>
+
+      <!-- Traffic Sign -->
+      <a-assets>
+        <a-asset-item id="stopSign" src="assets/trafficSigns/stopSign.glb">
+        </a-asset-item>
+      </a-assets>
+
+      <a-assets>
+        <a-asset-item id="goSign" src="assets/trafficSigns/goSign.glb">
+        </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="stopSign1"
+        gltf-model="#stopSign"
+        position="79 7.791 8.146"
+        rotation="114.310 0 -270.410"
+        scale="1 1 1"
+      >
+      </a-entity>
+
+      <a-entity
+        id="stopSign2"
+        gltf-model="#stopSign"
+        position="79 7.791 2.124"
+        rotation="114.310 0 -270.410"
+        scale="1 1 1"
+      >
+      </a-entity>
+
+      <a-entity
+        id="goSign1"
+        gltf-model="#goSign"
+        position="79 7.791 8.146"
+        rotation="114.310 0 -270.410"
+        scale="1 1 1"
+        visible="false"
+      >
+      </a-entity>
+
+      <a-entity
+        id="goSign2"
+        gltf-model="#goSign"
+        position="79 7.791 2.124"
+        rotation="114.310 0 -270.410"
+        scale="1 1 1"
+        visible="false"
+      >
+      </a-entity>
+
+      <!-- Hand Sanitizer -->
+      <a-obj-model
+        src="assets/handSanitizer/handSanitizer.obj"
+        mtl="assets/handSanitizer/handSanitizer.mtl"
+        scale=".6 .6 .6"
+        position="60 4.672 25"
+        rotation="0 -270 0"
+      ></a-obj-model>
+
+      <!-- Face Mask -->
+      <a-assets>
+        <a-asset-item id="faceMask" src="assets/faceMask.glb"> </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="faceMask"
+        gltf-model="#faceMask"
+        position="54 3.902 25"
+        rotation="0 180 0"
+        scale="8 8 8"
+      >
+      </a-entity>
+
+      <!-- Spray Bottle -->
+      <a-obj-model
+        src="assets/sprayBottle/sprayBottle.obj"
+        mtl="assets/sprayBottle/sprayBottle.mtl"
+        scale="0.5 0.5 0.5"
+        position="48 4.418 25"
+        rotation="0 180 0"
+      ></a-obj-model>
+
+      <!-- Toilet Paper -->
+      <a-assets>
+        <a-asset-item id="toiletPaper" src="assets/toiletPaper.glb">
+        </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="toiletPaper"
+        gltf-model="#toiletPaper"
+        position="66 3.480 25"
+        rotation="0 180 0"
+        scale="0.035 0.035 0.035"
+      >
+      </a-entity>
+
+      <!-- Amazon Box -->
+      <a-assets>
+        <a-asset-item id="amazonBox" src="assets/amazonBox.glb"> </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="amazonBox"
+        gltf-model="#amazonBox"
+        position="72 3.480 25"
+        rotation="0 180 0"
+        scale="0.030 0.030 0.030"
+      >
+      </a-entity>
+
+      <!-- Ceiling -->
+      <a-entity
+        static-body
+        geometry="primitive: box; depth: 50; height: 0.1; width: 40"
+        position="60 14 5"
+        material="shader: flat; side: double; opacity: 1;
+src: url(assets/ceiling_texture.jpg); repeat: 20 12"
+      ></a-entity>
+      <!-- Floor -->
+      <a-entity
+        static-body
+        geometry="primitive: box; depth: 50; height: 0.1; width: 40"
+        position="60 -0.5 5"
+        material="shader: flat; side: double; opacity: 1;
+src: url(assets/floor_texture.jpg); repeat: 12 5"
+      ></a-entity>
+
+      <!-- Soccer Grass -->
+      <a-entity
+        static-body
+        geometry="primitive: box; depth: 100; height: 0.1; width: 50"
+        position="150 -0.5 5"
+        material="shader: flat; side: double; opacity: 1; src: url(assets/soccer_grass_texture.jpg); "
+      ></a-entity>
+
+      <!-- Soccer Goals -->
+      <a-assets>
+        <a-asset-item id="soccerGoal" src="assets/soccerGoal.glb">
+        </a-asset-item>
+      </a-assets>
+
+      <a-entity
+        id="soccerGoal"
+        gltf-model="#soccerGoal"
+        position="150.101 1.639 46.369"
+        rotation="0 0 0"
+        scale="0.100 0.100 0.100"
+      >
+      </a-entity>
+
+      <a-entity
+        id="soccerGoal"
+        gltf-model="#soccerGoal"
+        position="150.101 1.639 -37.112"
+        rotation="0 180 0"
+        scale="0.100 0.100 0.100"
+      >
+      </a-entity>
+
+      <!-- Soccer Ball-->
+      <a-entity
+        geometry="primitive: sphere; radius: 0.8"
+        material="shader: flat; opacity: 1; src: url(assets/soccer_ball_texture.jpg); "
+        position="150.101 1.639 3"
+        dynamic-body
+      ></a-entity>
+      <!-- Grass -->
+      <a-entity
+        static-body
+        geometry="primitive: box; depth: 1000; height: 0.1; width: 1000"
+        position="0 -0.6 5"
+        material="shader: flat; side: double; opacity: 1; src: url(assets/grass_texture.jpg); repeat: 100 100"
+      ></a-entity>
+
+      <!-- Trim -->
+      <a-entity
+        geometry="primitive: box; depth: 0.6; height: 1; width: 40"
+        position="60 13.5 -19.7"
+        rotation="0 0 0"
+        material="shader: standard;
+roughness: 1; src: url(images/trim.jpg); repeat: 32 1"
+      ></a-entity>
+      <a-entity
+        geometry="primitive: box; depth: 0.6; height: 1; width: 40"
+        position="60 13.5 29.7"
+        rotation="0 0 0"
+        material="shader: standard;
+roughness: 1; src: url(images/trim.jpg); repeat: 32 1"
+      ></a-entity>
+      <a-entity
+        geometry="primitive: box; depth: 0.6; height: 1; width: 50"
+        position="79.7 13.5 5"
+        rotation="0 90 0"
+        material="shader: standard;
+roughness: 1; src: url(images/trim.jpg); repeat: 9 1"
+      ></a-entity>
+      <a-entity
+        geometry="primitive: box; depth: 0.6; height: 1; width: 50"
+        position="40.3 13.5 5"
+        rotation="0 90 0"
+        material="shader: standard;
+roughness: 1; src: url(images/trim.jpg); repeat: 9 1"
+      ></a-entity>
+
+      <!-- Walls  -->
+      <a-entity
+        static-body
+        geometry="primitive: box; depth: 1; height: 14; width: 40"
+        position="60 6.5 -20"
+        rotation="0 0 0"
+        material="shader: standard;
+roughness: 1; src: url(assets/wall_texture.jpg); repeat: 1 1"
+      ></a-entity>
+      <a-entity
+        static-body
+        geometry="primitive: box; depth: 1; height: 14; width: 40"
+        position="60 6.5 30"
+        rotation="0 0 0"
+        material="shader: standard;
+roughness: 1; src: url(assets/wall_texture.jpg); repeat: 1 1"
+      ></a-entity>
+      <a-entity
+        static-body
+        geometry="primitive: box; depth: 1; height: 14; width: 50"
+        position="40 6.5 4.8"
+        rotation="0 90 0"
+        material="shader: standard;
+roughness: 1; src: url(assets/wall_texture.jpg);"
+      ></a-entity>
+      <!-- Door Walls -->
+      <a-entity
+        static-body
+        geometry="primitive: box; depth: 1; height: 14; width: 18.75"
+        position="80 6.5 -10.25"
+        rotation="0 90 0"
+        material="shader: standard;
+roughness: 1; src: url(assets/wall_texture.jpg);"
+      ></a-entity>
+      <a-entity
+        static-body
+        geometry="primitive: box; depth: 1; height: 14; width: 18.75"
+        position="80 6.5 20.25"
+        rotation="0 90 0"
+        material="shader: standard;
+roughness: 1; src: url(assets/wall_texture.jpg);"
+      ></a-entity>
+      <a-entity
+        static-body
+        geometry="primitive: box; depth: 1; height: 7; width: 11.8"
+        position="80 10 5"
+        rotation="0 90 0"
+        material="shader: standard;
+roughness: 1; src: url(assets/wall_texture.jpg);"
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>
