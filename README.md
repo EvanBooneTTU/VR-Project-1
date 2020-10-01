@@ -6,7 +6,7 @@ My VR project highlights the affect of Covid-19 on my life.
 
 ### Video
 
-[![Watch the video](link to image cover)](link to mp4)
+[![Watch the video](image/video_cover)](images/VR_video.mp4)
 
 ### Sound Components
 
@@ -33,13 +33,13 @@ My VR project highlights the affect of Covid-19 on my life.
 
 ### Models created by me (either Blender or basic shapes)
 
-- [Column for Covid Ball]
-- [Lamps]
-- [Plinths]
-- [Door handle]
-- [Stop Sign]
-- [Go Sign]
-- [Remote Control]
-- [Doors]
-- [Soccer Ball]
-- [Remote Control]
+- Column for Covid Ball
+- Lamps
+- Plinths
+- Door handle
+- Stop Sign
+- Go Sign
+- Remote Control
+- Doors
+- Soccer Ball
+- Remote Control
