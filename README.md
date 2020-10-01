@@ -4,7 +4,7 @@
 
 My VR project highlights the affect of Covid-19 on my life.
 
-### Video
+### Video (Click to Watch)
 
 [![Video](images/video_cover.png)](https://youtu.be/mSrkglReQMw "VR Demo")
 
@@ -14,6 +14,39 @@ My VR project highlights the affect of Covid-19 on my life.
 
 ![Spray Bottle](images/sprayBottle.png)
 ![Hand Sanitizer](images/handSanitizer.png)
+
+### Functional Components
+
+-These components perform an action when clicked. These make use of Javascript's querySelector function, grabbing hold of the entities and changing their attributes upon click. This functionality can be seen below in the remote example.
+
+```javascript
+function remoteClick() {
+  var videoFeed = document.querySelector("#covid_video_output");
+
+  if (tvOn) {
+    videoFeed.setAttribute("visible", "false");
+    tvOn = false;
+  } else {
+    videoFeed.setAttribute("visible", "true");
+    tvOn = true;
+  }
+}
+```
+
+#### Covid Orb
+
+- Orb can be clicked to turn on/off covid mode, making changed to the door signs, projector output, and poster.
+  ![Covid Orb](images/covidOrb.png)
+
+#### Light Switch
+
+- Can turn on and off the overhead lights for the items displayed on the plinths.
+  ![Light Switch](images/lightSwitch.png)
+
+#### Remote
+
+- Can be clicked to turn on/off the overhead projector.
+  ![Remote](images/remote.png)
 
 ### Models taken from other sources
 
