@@ -6,7 +6,7 @@ My VR project highlights the affect of Covid-19 on my life.
 
 ### Video
 
-[![Watch the video](image/video_cover)](images/VR_video.mp4)
+[![Watch the video](images/video_cover)](images/VR_video.mp4)
 
 ### Sound Components
 
