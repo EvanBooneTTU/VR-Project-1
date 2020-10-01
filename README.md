@@ -1,91 +1,45 @@
-# A-Frame Boilerplate
+# CS 4331 - Project 1
 
-Boilerplate for creating WebVR scenes with [A-Frame](https://aframe.io).
+## Overview
 
-Alternatively, check out the [A-Frame Starter on
-glitch.com](https://glitch.com/~aframe) for a more interactive way on getting
-started.
+My VR project highlights the affect of Covid-19 on my life.
 
-## Getting Started
+### Video
 
-There are two easy options for obtaining this A-Frame scene. It's then up to you to make it your own!
+[![Watch the video](link to image cover)](link to mp4)
 
-### <sup>Option 1:</sup> Download the ZIP kit 📦
+### Sound Components
 
-[<img src="http://i.imgur.com/UVPZoM0.png" width="200">](https://github.com/aframevr/aframe-boilerplate/archive/master.zip)
+- These components emit a sound upon being clicked.
 
-After you have __[downloaded and extracted this `.zip` file](https://github.com/aframevr/aframe-boilerplate/archive/master.zip)__ containing the contents of this repo, open the resulting directory, and you'll be have your scene ready in these few steps:
+![Spray Bottle](images/sprayBottle.png)
+![Hand Sanitizer](images/handSanitizer.png)
 
-    npm install && npm start
-    open http://localhost:3000/
+### Models taken from other sources
 
-<hr>
+- [Sofa](https://poly.google.com/view/7Q_Ab2HLll1)
+- [Projector](https://poly.google.com/view/4oVHZbDvwV8)
+- [Covid Ball](https://sketchfab.com/3d-models/coronavirus-covid-19-virus-991102145c294fe4b633faecc23f3799)
+- [Desk](https://sketchfab.com/3d-models/low-poly-gaming-desk-6f1bc394de704e488d44e77134f23993)
+- [Chair](https://sketchfab.com/3d-models/boutique-office-chair-black-205890-ad9904fb0cf64297b10feea31faae21e)
+- [Hand Sanitizer](https://poly.google.com/view/8vVKgLRyRYe)
+- [Face Mask](https://poly.google.com/view/8ABOEoG76Z6)
+- [Dog](https://sketchfab.com/3d-models/dog-5e62ac5714aa44eda8b38adca4a9641b)
+- [Amazon Box](https://sketchfab.com/3d-models/amazon-prime-shipping-box-0641e66ea33c415694cf84f786178960)
+- [Toilet Paper](https://poly.google.com/view/3fTwIG4NTg3)
+- [Cleaning Bottle](https://poly.google.com/view/bnAE4wYavQQ)
+- [Light Switch](https://poly.google.com/view/drzI0Tg_uKT)
+- [Soccer Net](https://poly.google.com/view/590FRI8s976)
 
-### <small><sup>Option 2:</sup> Fork this Git repo 🍴🐙
+### Models created by me (either Blender or basic shapes)
 
-Alternatively, you can __[fork this repo](https://github.com/aframevr/aframe-boilerplate/fork)__ to get started, if you'd like to maintain a Git workflow.
-
-After you have __[forked this repo](https://github.com/aframevr/aframe-boilerplate/fork)__, clone a copy of your fork locally and you'll be have your scene ready in these few steps:
-
-    git clone https://github.com/aframevr/aframe-boilerplate.git
-    cd aframe-boilerplate && rm -rf .git && npm install && npm start
-    open http://localhost:3000/
-
-> :iphone: **Mobile pro tip:** Upon starting the development server, the URL will be logged to the console. Load that URL from a browser on your mobile device. (If your mobile phone and computer are not on the same LAN, consider using [ngrok](https://ngrok.com/) for local development and testing. [Browsersync](https://www.browsersync.io/) is also worth a gander.)
-
-<hr>
-
-### <small><sup>Option 3:</sup> Fork this CodePen example 🍴💾✒️
-
-Or, you can simply __[fork this CodePen example](http://codepen.io/team/mozvr/pen/BjygdO?editors=100)__ to dive right in. Enjoy!
-
-
-## Publishing your scene
-
-If you don't already know, GitHub offers free and awesome publishing of static sites through __[GitHub Pages](https://pages.github.com/)__.
-
-To publish your scene to your personal GitHub Pages:
-
-    npm run deploy
-
-And, it'll now be live at __http://`your_username`.github.io/__ :)
-
-<hr>
-
-To know which GitHub repo to deploy to, the `deploy` script first looks at the optional [`repository` key](https://docs.npmjs.com/files/package.json#repository) in the [`package.json` file](package.json) (see [npm docs](https://docs.npmjs.com/files/package.json#repository) for sample usage). If the `repository` key is missing, the script falls back to using the local git repo's remote origin URL (you can run the local command `git remote -v` to see all your remotes; also, you may refer to the [GitHub docs](https://help.github.com/articles/about-remote-repositories/) for more information).
-
-<hr>
-
-## Still need Help?
-
-### Installation
-
-First make sure you have Node installed.
-
-On Mac OS X, it's recommended to use [Homebrew](http://brew.sh/) to install Node + [npm](https://www.npmjs.com):
-
-    brew install node
-
-To install the Node dependencies:
-
-    npm install
-
-
-### Local Development
-
-To serve the site from a simple Node development server:
-
-    npm start
-
-Then launch the site from your favourite browser:
-
-[__http://localhost:3000/__](http://localhost:3000/)
-
-If you wish to serve the site from a different port:
-
-    PORT=8000 npm start
-
-
-## License
-
-This program is free software and is distributed under an [MIT License](LICENSE).
+- [Column for Covid Ball]
+- [Lamps]
+- [Plinths]
+- [Door handle]
+- [Stop Sign]
+- [Go Sign]
+- [Remote Control]
+- [Doors]
+- [Soccer Ball]
+- [Remote Control]
