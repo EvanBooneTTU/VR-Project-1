@@ -45,7 +45,7 @@ function remoteClick() {
 
 #### Remote
 
-- Can be clicked to turn on/off the overhead projector.
+- Can be clicked to turn on/off the overhead projector./n
   ![Remote](images/remote.png)
 
 ### Models taken from other sources
