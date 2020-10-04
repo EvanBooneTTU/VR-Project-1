@@ -6,6 +6,7 @@
     <meta name="description" content="Hello, World! - A-Frame" />
     <script src="libs/aframe.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
 
     <script>
       // Global Variables
@@ -214,6 +215,13 @@
       >
       </a-entity>
 
+      <a-entity
+        text-geometry="value: Switch Me!"
+        position="45 7.004 29.464"
+        material="color: white; side: double;"
+        rotation="0 180 0"
+      ></a-entity>
+
       <!-- TV -->
       <a-assets>
         <video
@@ -286,6 +294,29 @@
       >
       </a-entity>
 
+      <a-entity
+        text-geometry="value: Click Me!"
+        position="64.630 1.534 -7.077"
+        material="color: white; side: double;"
+        size="0.1"
+      ></a-entity>
+
+      <a-entity
+        text-geometry="value: Click Me!"
+        position="49.4 5.5 25.042"
+        material="color: white; side: double;"
+        size="0.2"
+        rotation="0 180 0"
+      ></a-entity>
+
+      <a-entity
+        text-geometry="value: Click Me!"
+        position="61.4 5.5 25.042"
+        material="color: white; side: double;"
+        size="0.2"
+        rotation="0 180 0"
+      ></a-entity>
+
       <!-- Posters -->
       <a-entity
         static-body
@@ -342,6 +373,13 @@
         height="4.3"
         material="src: url(assets/metal_texture.jpg)"
       ></a-cylinder>
+
+      <a-entity
+        text-geometry="value: Covid Switch!"
+        position="61.4 3.85 -6.160"
+        material="color: white; side: double;"
+        size="0.3"
+      ></a-entity>
 
       <!-- Glass Doors -->
       <a-entity
